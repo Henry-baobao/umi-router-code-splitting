@@ -4,7 +4,7 @@
  * @Author: Henry
  * @Date: 2020-04-29 16:42:21
  * @LastEditors: Henry
- * @LastEditTime: 2020-05-08 16:00:51
+ * @LastEditTime: 2020-05-08 16:07:31
  */
 import styles from './index.less'
 import NavLink from 'umi/navlink'
@@ -34,9 +34,6 @@ function BasicLayout (props) {
         </NavLink>
       </div>
       <div className={styles.content}>
-        {/* <Switch>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </Switch> */}
         <Route exact path='/'>
           <Home />
         </Route>
