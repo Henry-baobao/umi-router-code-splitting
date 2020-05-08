@@ -4,11 +4,11 @@
  * @Author: Henry
  * @Date: 2020-04-29 16:42:21
  * @LastEditors: Henry
- * @LastEditTime: 2020-05-07 20:46:52
+ * @LastEditTime: 2020-05-08 16:00:51
  */
 import styles from './index.less'
 import NavLink from 'umi/navlink'
-import { Switch } from 'react-router-dom'
+// import { Switch } from 'react-router-dom'
 import { Route } from 'umi'
 import Home from '../pages/index'
 import Calender from '../pages/Calender/index'
@@ -34,20 +34,21 @@ function BasicLayout (props) {
         </NavLink>
       </div>
       <div className={styles.content}>
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route path='/calender'>
-            <Calender />
-          </Route>
-          <Route path='/grade'>
-            <Grade />
-          </Route>
-          <Route path='/message'>
-            <Message />
-          </Route>
-        </Switch>
+        {/* <Switch>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </Switch> */}
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route path='/calender'>
+          <Calender />
+        </Route>
+        <Route path='/grade'>
+          <Grade />
+        </Route>
+        <Route path='/message'>
+          <Message />
+        </Route>
       </div>
     </div>
   )
