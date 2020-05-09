@@ -4,50 +4,12 @@
  * @Author: Henry
  * @Date: 2020-04-29 16:42:21
  * @LastEditors: Henry
- * @LastEditTime: 2020-05-09 10:29:01
+ * @LastEditTime: 2020-05-09 15:55:52
  */
 import styles from './index.less';
 import NavLink from 'umi/navlink';
-// import { Switch } from 'react-router-dom'
 import { Route } from 'umi';
-// import Home from '../pages/index';
-// import Calender from '../pages/Calender/index';
-// import Grade from '../pages/Grade/index';
-// import Message from '../pages/Message/index';
-import loadable from '@loadable/component';
-import pMinDelay from 'p-min-delay';
-
-const AsyncPage = loadable(
-  props => {
-    console.log('loadable component');
-    //通过wepbackChunkName设置打包js文件名称
-    return import(/* webpackChunkName: `p_[request]_chunk` */ `../pages/${props.page}/index`);
-  },
-  {
-    fallback: <div>loading...</div>,
-  },
-);
-
-//延迟加载
-const DelayedAsyncPage = loadable(
-  props => {
-    console.log('delayed loadable component');
-    //通过p-min-delay实现延迟加载
-    return pMinDelay(
-      import(/* webpackChunkName: `p_delayed_[index]_[request]` */ `../pages/${props.page}/index`),
-      2000,
-    );
-  },
-  {
-    //当import组件加载时间较长时，显示fallback
-    fallback: <div>loading...</div>,
-  },
-);
-
-const HomePage = loadable(() => {
-  console.log('load home page');
-  return import(/* webpackChunkName: `p_index` */ '../pages/index');
-});
+import { AsyncPage, DelayedAsyncPage } from '../utils/AsyncPage';
 
 function BasicLayout(props) {
   console.log('basic layout component');
@@ -70,29 +32,26 @@ function BasicLayout(props) {
       </div>
       <div className={styles.content}>
         <Route exact path="/">
-          <HomePage />
+          <AsyncPage page="index" />
         </Route>
         <Route path="/calender">
-          <DelayedAsyncPage page="Calender" />
+          <DelayedAsyncPage page="Calender/index" />
         </Route>
         <Route path="/grade">
-          <AsyncPage page="Grade" />
+          <AsyncPage page="Grade/index" />
         </Route>
         <Route path="/message">
-          <AsyncPage page="Message" />
+          <AsyncPage page="Message/index" />
         </Route>
-        {/* <Route exact path="/">
-          <Home />
+        <Route
+          path="/course/:id"
+          render={routeParams => <AsyncPage {...routeParams} page="Course/index" />}
+        >
+          {/* 通过使用withRouter高阶组件，能获params中的id属性 */}
+          {/* <AsyncPage page='Course/index' /> */}
+          {/* 通过扩展属性的方式，传入的params没有id属性 */}
+          {/* <AsyncPage {...props} page='Course/index' />  */}
         </Route>
-        <Route path="/calender">
-          <Calender />
-        </Route>
-        <Route path="/grade">
-          <Grade />
-        </Route>
-        <Route path="/message">
-          <Message />
-        </Route> */}
       </div>
     </div>
   );

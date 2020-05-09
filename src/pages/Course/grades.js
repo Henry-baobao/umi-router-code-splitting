@@ -4,14 +4,15 @@
  * @Author: Henry
  * @Date: 2020-05-07 10:48:20
  * @LastEditors: Henry
- * @LastEditTime: 2020-05-07 15:49:50
+ * @LastEditTime: 2020-05-09 15:42:30
  */
 
 import React from 'react'
 import { courses } from '@/utils/CourseData'
 
 export default function Grades (props) {
-  const {children, match: {params}} = props
+  console.log('grades props: ', props)
+  const { match: {params}} = props
   const {assignments} = courses[params.id]
   return (
     <div>

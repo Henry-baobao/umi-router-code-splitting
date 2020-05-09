@@ -1,6 +1,16 @@
+/*
+ * @Description: 
+ * @Version: 
+ * @Author: Henry
+ * @Date: 2020-04-29 16:42:21
+ * @LastEditors: Henry
+ * @LastEditTime: 2020-05-09 10:56:23
+ */
 import styles from './index.less'
 import { courses } from '@/utils/CourseData'
 import Link from 'umi/link'
+import { Route } from 'umi'
+import { DelayedAsyncPage } from '../utils/AsyncPage'
 
 export default function() {
   return (
